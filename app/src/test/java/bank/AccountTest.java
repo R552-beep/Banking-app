@@ -12,4 +12,11 @@ public class AccountTest {
     assertEquals(expectedBalance, account.getBalance(), 0.001);
   }
 
+  @Test
+  public void testDeposit() {
+    Account account = new Account();
+    account.deposit(100.0);
+    assertEquals(100.0,account.getBalance(), 0.0);
+  } 
+
 }
