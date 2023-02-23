@@ -17,6 +17,14 @@ public class AccountTest {
     Account account = new Account();
     account.deposit(100.0);
     assertEquals(100.0,account.getBalance(), 0.0);
-  } 
+  }
+  
+  @Test
+  public void testWithdraw() {
+    Account account = new Account();
+    account.deposit(100.0);
+    account.withdraw(50.0);
+    assertEquals(50.0, account.getBalance(), 0.0);
+  }
 
 }
