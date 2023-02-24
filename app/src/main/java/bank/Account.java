@@ -18,7 +18,7 @@ public class Account {
   public void withdraw(double amount) {
     if (this.balance < amount) {
       throw new IllegalArgumentException("Insufficient funds");
-  }
+    }
     this.balance -= amount;
   }
 
