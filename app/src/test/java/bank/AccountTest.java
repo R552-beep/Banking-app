@@ -34,5 +34,14 @@ public class AccountTest {
     account.deposit(50.0);
     assertThrows(IllegalArgumentException.class, () -> account.withdraw(100.0));
   }
-
+  
+  @Test
+  public void testDepositAndWithdrawMultipleTimes() {
+      Account account = new Account();
+      account.deposit(100.0);
+      account.withdraw(50.0);
+      account.deposit(25.0);
+      account.withdraw(75.0);
+      assertEquals(0.0, account.getBalance(), 0.0);
+  }
 }
