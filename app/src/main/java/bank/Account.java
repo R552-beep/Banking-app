@@ -2,6 +2,7 @@ package bank;
 
 public class Account {
   private double balance;
+  private Printer printer;
   
 
   public Account() {
@@ -22,6 +23,12 @@ public class Account {
     }
     this.balance -= amount;
   }  
+
+  public String printStatement() {
+    printer.print("date || credit || debit || balance");
+    printer.print(this.statement);
+    return "Statement printed successfully";
+}
   
 }
 
