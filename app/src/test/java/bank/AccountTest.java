@@ -3,6 +3,7 @@ package bank;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+
 public class AccountTest {
 
   @Test
@@ -25,6 +26,13 @@ public class AccountTest {
     account.deposit(100.0);
     account.withdraw(50.0);
     assertEquals(50.0, account.getBalance(), 0.0);
+  }
+
+  @Test 
+  public void testWithdrawThrowsExceptionWhenInsufficientFunds() {
+    Account account = new Account();
+    account.deposit(50.0);
+    assertThrows(IllegalArgumentException.class, () -> account.withdraw(100.0));
   }
 
 }
