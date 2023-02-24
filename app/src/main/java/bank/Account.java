@@ -2,6 +2,7 @@ package bank;
 
 public class Account {
   private double balance;
+  
 
   public Account() {
       this.balance = 0.00;
@@ -20,8 +21,7 @@ public class Account {
       throw new IllegalArgumentException("Insufficient funds");
     }
     this.balance -= amount;
-  }
-
+  }  
   
 }
 
