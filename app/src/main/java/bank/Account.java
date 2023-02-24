@@ -1,9 +1,11 @@
 package bank;
 
+import java.util.List;
 
 public class Account {
   private double balance;
   private Printer printer;
+  private List<String> statement;
   
   public Account() {
       this.balance = 0.00;
