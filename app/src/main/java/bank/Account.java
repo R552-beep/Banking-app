@@ -1,10 +1,10 @@
 package bank;
 
+
 public class Account {
   private double balance;
   private Printer printer;
   
-
   public Account() {
       this.balance = 0.00;
   }
