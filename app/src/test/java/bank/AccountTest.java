@@ -2,6 +2,10 @@ package bank;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.Assert.*;
 
 public class AccountTest {
@@ -44,17 +48,25 @@ public class AccountTest {
       account.withdraw(75.0);
       assertEquals(0.0, account.getBalance(), 0.0);
   }
-
   @Test
-    public void testPrintStatement() {
-        Account account = new Account();
-        account.deposit(1000.0);
-        account.withdraw(500.0);
-        account.deposit(750.0);
-        String expectedStatement = "date || credit || debit || balance\n" +
-                "22/02/2023 || 1000.00 || || 1000.00\n" +
-                "22/02/2023 || || 500.00 || 500.00\n" +
-                "22/02/2023 || 750.00 || || 1250.00\n";
-        assertEquals(expectedStatement, account.printStatement());
-    }
+  public void testPrintStatement() {
+      ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+      System.setOut(new PrintStream(outContent));
+  
+      Account account = new Account();
+  
+      account.deposit(1000.00);
+      account.withdraw(500.00);
+      account.deposit(750.00);
+  
+      String expectedStatement = "date || credit || debit || balance\n" +
+                                  "26/02/2023 || 1000.00 || 0.00 || 1000.00\n" +
+                                  "26/02/2023 || 0.00 || 500.00 || 500.00\n" +
+                                  "26/02/2023 || 750.00 || 0.00 || 1250.00\n";
+      account.printStatement();
+      String actualStatement = outContent.toString();
+  
+      assertEquals(expectedStatement, actualStatement);
+  }    
 }
+
